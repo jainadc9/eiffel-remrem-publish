@@ -37,9 +37,14 @@ jobs:
         with:
           distribution: 'corretto' 
           java-version: '8'
+
         
       - name: Before install
         run: curl -i -u guest:guest -H "content-type:application/json" -XPUT -d'{"type":"topic","durable":true}' http://127.0.0.1:15672/api/exchanges/%2f/eiffel.test
+        env:
+          RABBITMQ_HOST: 127.0.0.1
+          RABBITMQ_PORT: ${{ job.services.rabbitmq.ports['5672'] }}
+
         
       - name: Run test
         run: mvn -V -B -U clean test jacoco:report
