@@ -25,7 +25,8 @@ jobs:
         image: bitnami/rabbitmq:3.8
         env:
           RABBITMQ_USERNAME: eiffel
-          RABBITMQ_PASSWORD: eiffel123   
+          RABBITMQ_PASSWORD: eiffel123 
+          RABBITMQ_MANAGEMENT_PORT_NUMBER: 15672
           RABBITMQ_VHOST: \
         ports:
           - 15672:15672
