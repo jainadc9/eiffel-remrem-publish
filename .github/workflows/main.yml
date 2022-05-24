@@ -27,7 +27,7 @@ jobs:
           RABBITMQ_USERNAME: eiffel
           RABBITMQ_PASSWORD: eiffel123   
           RABBITMQ_VHOST: \
-          RABBITMQ_FORCE_BOOT: yes
+          RABBITMQ_FORCE_BOOT: true
         ports:
           - 15672:15672
 
