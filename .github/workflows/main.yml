@@ -41,7 +41,7 @@ jobs:
 
         
       - name: Before install
-        run: curl -i -k -v -u eiffel:eiffel123 -H "content-type:application/json" -XPUT -d'{"type":"topic","durable":true}' http://rabbitmq:${{ RABBITMQ_PORT }}/api/exchanges/%2f/eiffel.test 
+        run: curl -i -k -v -u eiffel:eiffel123 -H "content-type:application/json" -XPUT -d'{"type":"topic","durable":true}' http://rabbitmq:15672/api/exchanges/%2f/eiffel.test 
         env:
           RABBITMQ_HOST: rabbitmq
           RABBITMQ_PORT: ${{ job.services.rabbitmq.ports[15672] }}
