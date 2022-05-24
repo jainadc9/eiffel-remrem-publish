@@ -22,11 +22,10 @@ jobs:
     
     services:
       rabbitmq:
-        image: bitnami/rabbitmq:3.8
+        image: rabbitmq:3.8-management
         env:
           RABBITMQ_USERNAME: eiffel
-          RABBITMQ_PASSWORD: eiffel123      
-          RABBITMQ_MANAGEMENT_PORT_NUMBER: 15672      
+          RABBITMQ_PASSWORD: eiffel123           
         ports:
           - 15672:15672
 
