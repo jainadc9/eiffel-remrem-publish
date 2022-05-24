@@ -50,7 +50,7 @@ jobs:
         
       - name: Before install
         shell: bash
-        run: curl -i -k -v -u eiffel:eiffel123 -H "content-type:application/json" 
+        run: curl -i -k -v -u guest:guest -H "content-type:application/json" 
                    -XPUT -d'{"type":"topic","durable":true}'
                      http://${{ env.RABBITMQ_HOST }}:${{ env.RABBITMQ_MNG_PORT }}/api/exchanges/%2f/eiffel.test 
         env:
