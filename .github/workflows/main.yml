@@ -24,11 +24,7 @@ jobs:
       rabbitmq:
         image: bitnami/rabbitmq:3.8
         options: >-
-          --health-cmd "rabbitmqctl status"
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
-          --health-start-period 15s
+          --restart always
         env:
           RABBITMQ_USERNAME: eiffel
           RABBITMQ_PASSWORD: eiffel123   
