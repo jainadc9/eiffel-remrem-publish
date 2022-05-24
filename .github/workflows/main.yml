@@ -23,8 +23,6 @@ jobs:
     services:
       rabbitmq:
         image: bitnami/rabbitmq:3.8
-        options: >-
-          --restart always
         env:
           RABBITMQ_USERNAME: eiffel
           RABBITMQ_PASSWORD: eiffel123   
