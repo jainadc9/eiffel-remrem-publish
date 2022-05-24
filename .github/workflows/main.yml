@@ -36,6 +36,7 @@ jobs:
           RABBITMQ_VHOST: /
         ports:
           - 15672:15672
+          - 5672:5672
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -60,4 +61,7 @@ jobs:
         
       - name: Run test
         run: mvn -V -B -U clean test jacoco:report
+        env:
+          RABBITMQ_HOST: 0.0.0.0
+          RABBITMQ_MNG_PORT: ${{ job.services.rabbitmq.ports[5672] }}
         
