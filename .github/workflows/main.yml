@@ -24,7 +24,7 @@ jobs:
       rabbitmq:
         image: bitnami/rabbitmq:3.8
         options: >-
-          --health-cmd "if rabbitmqctl status; then \nexit 0 \nfi \nexit 1"
+          --health-cmd "rabbitmqctl status"
           --health-interval 15s
           --health-timeout 5s
           --health-retries 5
@@ -49,7 +49,9 @@ jobs:
         
       - name: Before install
         shell: bash
-        run: curl -i -k -v -u eiffel:eiffel123 -H "content-type:application/json" 
+        run: |
+             rabbitmqctl status
+             curl -i -k -v -u eiffel:eiffel123 -H "content-type:application/json" 
                    -XPUT -d'{"type":"topic","durable":true}'
                      http://${{ env.RABBITMQ_HOST }}:${{ env.RABBITMQ_MNG_PORT }}/api/exchanges/%2f/eiffel.test 
         env:
