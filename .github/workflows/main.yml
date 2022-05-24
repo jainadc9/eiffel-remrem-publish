@@ -22,7 +22,7 @@ jobs:
     
     services:
       rabbitmq:
-        image: bitnami/rabbitmq:3.8
+        image: rabbitmq:3.8-management
         options: >-
           --health-cmd "rabbitmqctl status"
           --health-interval 15s
@@ -30,10 +30,9 @@ jobs:
           --health-retries 5
           --health-start-period 30s
         env:
-          RABBITMQ_USERNAME: guest
-          RABBITMQ_PASSWORD: guest 
-          RABBITMQ_MANAGEMENT_PORT_NUMBER: 15672
-          RABBITMQ_VHOST: /
+          RABBITMQ_DEFAULT_USER: guest
+          RABBITMQ_DEFAULT_PASS: guest 
+          RABBITMQ_DEFAULT_VHOST: /
         ports:
           - 15672:15672
           - 5672:5672
