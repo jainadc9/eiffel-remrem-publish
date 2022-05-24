@@ -30,8 +30,8 @@ jobs:
           --health-retries 5
           --health-start-period 30s
         env:
-          RABBITMQ_USERNAME: eiffel
-          RABBITMQ_PASSWORD: eiffel123 
+          RABBITMQ_USERNAME: guest
+          RABBITMQ_PASSWORD: guest 
           RABBITMQ_MANAGEMENT_PORT_NUMBER: 15672
           RABBITMQ_VHOST: /
         ports:
@@ -54,7 +54,7 @@ jobs:
                    -XPUT -d'{"type":"topic","durable":true}'
                      http://${{ env.RABBITMQ_HOST }}:${{ env.RABBITMQ_MNG_PORT }}/api/exchanges/%2f/eiffel.test 
         env:
-          RABBITMQ_HOST: 0.0.0.0
+          RABBITMQ_HOST: 127.0.0.1
           RABBITMQ_MNG_PORT: ${{ job.services.rabbitmq.ports[15672] }}
         
 
@@ -62,6 +62,6 @@ jobs:
       - name: Run test
         run: mvn -V -B -U clean test jacoco:report
         env:
-          RABBITMQ_HOST: 0.0.0.0
-          RABBITMQ_MNG_PORT: ${{ job.services.rabbitmq.ports[5672] }}
+          RABBITMQ_HOST: 127.0.0.1
+          RABBITMQ_PORT: ${{ job.services.rabbitmq.ports[5672] }}
         
