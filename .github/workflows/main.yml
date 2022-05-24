@@ -27,7 +27,7 @@ jobs:
           RABBITMQ_DEFAULT_USER: guest
           RABBITMQ_DEFAULT_PASS: guest
         ports:
-          - 5672
+          - 15672
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -43,7 +43,7 @@ jobs:
         run: curl -i -u guest:guest -H "content-type:application/json" -XPUT -d'{"type":"topic","durable":true}' http://127.0.0.1:15672/api/exchanges/%2f/eiffel.test
         env:
           RABBITMQ_HOST: 127.0.0.1
-          RABBITMQ_PORT: ${{ job.services.rabbitmq.ports['5672'] }}
+          RABBITMQ_PORT: ${{ job.services.rabbitmq.ports['15672'] }}
 
         
       - name: Run test
