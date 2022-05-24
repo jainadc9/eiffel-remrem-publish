@@ -28,7 +28,7 @@ jobs:
           RABBITMQ_PASSWORD: eiffel123      
           RABBITMQ_MANAGEMENT_PORT_NUMBER: 15672      
         ports:
-          - 15672:15672
+          - 15672
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
