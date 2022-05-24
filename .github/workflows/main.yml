@@ -28,7 +28,7 @@ jobs:
           RABBITMQ_PASSWORD: eiffel123      
           RABBITMQ_MANAGEMENT_PORT_NUMBER: 15672      
         ports:
-          - 15672
+          - 15672:15672
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -41,10 +41,10 @@ jobs:
 
         
       - name: Before install
-        run: curl -i -k -v -u eiffel:eiffel123 -H "content-type:application/json" -XPUT -d'{"type":"topic","durable":true}' http://rabbitmq:15672/api/exchanges/%2f/eiffel.test 
+        run: curl -i -k -v -u eiffel:eiffel123 -H "content-type:application/json" -XPUT -d'{"type":"topic","durable":true}' http://localhost:15672/api/exchanges/%2f/eiffel.test 
         env:
-          RABBITMQ_HOST: rabbitmq
-          RABBITMQ_PORT: ${{ job.services.rabbitmq.ports[15672] }}
+          RABBITMQ_HOST: localhost
+          RABBITMQ_PORT: 15672
 
         
       - name: Run test
