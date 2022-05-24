@@ -25,7 +25,7 @@ jobs:
         image: bitnami/rabbitmq:3.8
         options: >-
           --health-cmd "if rabbitmqctl status; then \nexit 0 \nfi \nexit 1"
-          --health-interval 10s
+          --health-interval 15s
           --health-timeout 5s
           --health-retries 5
         env:
@@ -33,7 +33,6 @@ jobs:
           RABBITMQ_PASSWORD: eiffel123 
           RABBITMQ_MANAGEMENT_PORT_NUMBER: 15672
           RABBITMQ_VHOST: /
-          RABBITMQ_FORCE_BOOT: true
         ports:
           - 15672:15672
 
