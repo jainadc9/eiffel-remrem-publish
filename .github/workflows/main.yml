@@ -23,9 +23,6 @@ jobs:
     services:
       rabbitmq:
         image: rabbitmq:3.8-management
-        env:
-          RABBITMQ_DEFAULT_USER: guest
-          RABBITMQ_DEFAULT_PASS: guest
         ports:
           - 15672:15672
 
@@ -40,9 +37,9 @@ jobs:
 
         
       - name: Before install
-        run: curl -i -u guest:guest -H "content-type:application/json" -XPUT -d'{"type":"topic","durable":true}' https://localhost:15672/api/exchanges/%2f/eiffel.test --trace-ascii dump.txt
+        run: curl -i -u guest:guest -H "content-type:application/json" -XPUT -d'{"type":"topic","durable":true}' --trace-ascii dump.txt http://0.0.0.0:15672/api/exchanges/%2f/eiffel.test 
         env:
-          RABBITMQ_HOST: localhost
+          RABBITMQ_HOST: 0.0.0.0
           RABBITMQ_PORT: 15672
 
         
