@@ -40,7 +40,7 @@ jobs:
 
         
       - name: Before install
-        run: curl -i -u guest:guest -H "content-type:application/json" -XPUT -d'{"type":"topic","durable":true}' http://localhost:15672/api/exchanges/%2f/eiffel.test
+        run: curl -i -u guest:guest -H "content-type:application/json" -XPUT -d'{"type":"topic","durable":true}' https://localhost:15672/api/exchanges/%2f/eiffel.test --trace-ascii dump.txt
         env:
           RABBITMQ_HOST: localhost
           RABBITMQ_PORT: 15672
