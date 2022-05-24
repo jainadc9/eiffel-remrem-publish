@@ -24,7 +24,7 @@ jobs:
       rabbitmq:
         image: bitnami/rabbitmq:3.8
         options: >-
-          --healthcheck -cmd "rabbitmqctl status"
+          --health-cmd "rabbitmqctl status"
           --health-interval 10s
           --health-timeout 5s
           --health-retries 5
