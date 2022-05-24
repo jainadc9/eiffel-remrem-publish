@@ -54,7 +54,7 @@ jobs:
                    -XPUT -d'{"type":"topic","durable":true}'
                      http://${{ env.RABBITMQ_HOST }}:${{ env.RABBITMQ_MNG_PORT }}/api/exchanges/%2f/eiffel.test 
         env:
-          RABBITMQ_HOST: 127.0.0.1
+          RABBITMQ_HOST: 0.0.0.0
           RABBITMQ_MNG_PORT: ${{ job.services.rabbitmq.ports[15672] }}
         
 
@@ -62,6 +62,6 @@ jobs:
       - name: Run test
         run: mvn -V -B -U clean test jacoco:report
         env:
-          RABBITMQ_HOST: 127.0.0.1
+          RABBITMQ_HOST: 0.0.0.0
           RABBITMQ_PORT: ${{ job.services.rabbitmq.ports[5672] }}
         
