@@ -1,3 +1,6 @@
+## 2.1.0
+- Implemented new routing key template for Sepia.
+
 ## 2.0.28
 - Made changes to override AMQP Basic properties.
 
